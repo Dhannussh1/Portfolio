@@ -458,7 +458,44 @@ a, button, .timeline-item, .dot, .recent-dot {
     color: var(--light-text);
 }
 
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 35px;
+    color: var(--primary-color);
+}
+
 /* Projects */
+.academics-container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.score-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.score-item.centered {
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    align-items: center;
+}
+
+.score-item.centered .college-scores {
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+}
+
 .projects-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1040,8 +1077,17 @@ footer {
     }
 
     /* Scoreboard Mobile */
-    .score-grid, .co-curricular-grid { grid-template-columns: 1fr; }
-    .college-span { grid-column: span 1; }
+    @media (max-width: 600px) {
+    .score-grid {
+        grid-template-columns: 1fr;
+    }
+    .co-curricular-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .college-span {
+        grid-column: span 1;
+    }
+}
     .college-scores { flex-direction: column; gap: 10px; }
 
     /* Family Tree Mobile */
@@ -1146,21 +1192,23 @@ img { max-width: 100%; height: auto; }
         height: 42px;
     }
 
-    /* Academics Orientation Request */
+    /* Academics Orientation Reset */
     .academics-container .academic-card:nth-child(2) {
-        text-align: right;
+        text-align: center;
     }
 
     .academics-container .academic-card:nth-child(2) .card-header {
-        flex-direction: row-reverse;
+        flex-direction: row;
+        justify-content: center;
     }
 
     .academics-container .academic-card:nth-child(2) .co-item {
-        flex-direction: row-reverse;
+        flex-direction: row;
+        text-align: left;
     }
 
     .academics-container .academic-card:nth-child(2) .co-info {
-        align-items: flex-end;
+        align-items: flex-start;
     }
 }
 
