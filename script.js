@@ -1,4 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+    /* =========================================================
+   MOBILE NAVBAR TOGGLE
+========================================================= */
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu after click
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+        });
+    });
     // 1. Custom Cursor (King Piece)
     const cursor = document.querySelector('.cursor');
 
@@ -259,7 +278,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     startRecentAutoSlide();
-    
+
     // 7. Lightbox Logic
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
@@ -287,9 +306,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Special handling for timeline images since they are inside a modal
     // Actually the delegation above handles them unless they are stopped by propagation
     // I'll make sure delegation is broad enough
-    
+
     closeLightbox.addEventListener('click', closeLightboxModal);
-    
+
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) {
             closeLightboxModal();
@@ -306,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function addSwipeSupport(element, onSwipeLeft, onSwipeRight) {
         let touchStartX = 0;
         let touchEndX = 0;
-        
+
         element.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
         }, { passive: true });
@@ -323,10 +342,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Apply to Journey Slider
-    const journeySlider = document.querySelector('.slider-content');
+    const journeySlider = document.querySelector('.slider-container');
+
     if (journeySlider) {
-        // nextSlide and prevSlide are accessible here as they are in the same scope
-        addSwipeSupport(journeySlider, nextSlide, prevSlide);
+        addSwipeSupport(
+            journeySlider,
+            () => {
+                currentSlideIndex = (currentSlideIndex + 1) % 3;
+                updateSlider();
+                resetAutoSlide();
+            },
+            () => {
+                currentSlideIndex = (currentSlideIndex > 0)
+                    ? currentSlideIndex - 1
+                    : 2;
+
+                updateSlider();
+                resetAutoSlide();
+            }
+        );
     }
 
     // Apply to Recent Updates Slider

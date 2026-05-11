@@ -65,6 +65,47 @@ a, button, .timeline-item, .dot, .recent-dot {
     display: none; /* Removed as requested */
 }
 
+/* Menu Toggle Button Styles */
+.menu-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    background: var(--primary-color);
+    color: var(--white);
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    .nav-links {
+        display: flex !important;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1500;
+        box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    }
+    .nav-links.active {
+        right: 0;
+    }
+}
+
 /* Navbar */
 #navbar {
     position: fixed;
@@ -1089,4 +1130,73 @@ img { max-width: 100%; height: auto; }
 /* Ensure all images look clickable */
 .profile-pic, .family-member img, .project-img img, .slide-image-square img {
     cursor: zoom-in;
+}
+/*--------------------------*/
+@media (max-width: 768px) {
+    .slider-container {
+        min-height: auto;
+    }
+
+    .slide {
+        padding: 10px;
+    }
+
+    .slider-controls button {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* Academics Orientation Request */
+    .academics-container .academic-card:nth-child(2) {
+        text-align: right;
+    }
+
+    .academics-container .academic-card:nth-child(2) .card-header {
+        flex-direction: row-reverse;
+    }
+
+    .academics-container .academic-card:nth-child(2) .co-item {
+        flex-direction: row-reverse;
+    }
+
+    .academics-container .academic-card:nth-child(2) .co-info {
+        align-items: flex-end;
+    }
+}
+
+/* =========================================================
+   SMALL DEVICES
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .section-title {
+        font-size: 1.8rem;
+    }
+
+    .hero-name {
+        font-size: 2rem;
+    }
+
+    .profile-pic-container {
+        width: 150px;
+        height: 150px;
+    }
+
+    .project-tech span {
+        font-size: 0.65rem;
+    }
+
+    .cursor {
+        display: none;
+    }
+
+    body {
+        cursor: auto !important;
+    }
+
+    a,
+    button {
+        cursor: pointer !important;
+    }
 }
