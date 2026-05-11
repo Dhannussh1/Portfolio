@@ -1126,7 +1126,12 @@ footer {
         flex-direction: column !important;
         height: auto !important;
         overflow-y: visible !important;
-        padding: 20px !important;
+        padding: 15px !important;
+        gap: 20px !important;
+    }
+
+    .slide {
+        padding: 10px !important; /* Reduced from 20px */
     }
     
     .slide-image-square {
@@ -1138,8 +1143,28 @@ footer {
     .slide-text-rectangle {
         width: 100% !important;
         height: auto !important;
-        padding: 20px 0 !important;
+        padding: 15px 0 !important; /* Reduced from 20px */
         font-size: 0.95rem !important;
+    }
+
+    /* Fix for Recent Updates shrinking */
+    .recent-slider-container {
+        padding: 1.5rem 1rem !important; /* Reduced from 3rem */
+        border-radius: 20px;
+    }
+
+    .recent-slide {
+        padding: 0 10px !important; /* Reduced from 60px */
+    }
+
+    .recent-slider-container .slider-controls {
+        padding: 0 5px;
+    }
+
+    .recent-slider-container .slider-controls button {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
     }
 
     .modal-content {
