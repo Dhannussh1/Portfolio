@@ -301,4 +301,45 @@ document.addEventListener('DOMContentLoaded', () => {
             closeLightboxModal();
         }
     });
+
+    // 8. Swipe Support for Mobile
+    function addSwipeSupport(element, onSwipeLeft, onSwipeRight) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        element.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        element.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) onSwipeLeft();
+            if (touchEndX > touchStartX + 50) onSwipeRight();
+        }
+    }
+
+    // Apply to Journey Slider
+    const journeySlider = document.querySelector('.slider-content');
+    if (journeySlider) {
+        // nextSlide and prevSlide are accessible here as they are in the same scope
+        addSwipeSupport(journeySlider, nextSlide, prevSlide);
+    }
+
+    // Apply to Recent Updates Slider
+    const recentSliderElem = document.getElementById('recent-slider');
+    if (recentSliderElem) {
+        addSwipeSupport(recentSliderElem, () => {
+            recentIndex = (recentIndex + 1) % 2;
+            updateRecentSlider();
+            startRecentAutoSlide();
+        }, () => {
+            recentIndex = (recentIndex > 0) ? recentIndex - 1 : 1;
+            updateRecentSlider();
+            startRecentAutoSlide();
+        });
+    }
 });
