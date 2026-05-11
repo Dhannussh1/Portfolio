@@ -1107,7 +1107,7 @@ footer {
 
 /* Tablets & Large Phones */
 @media (max-width: 768px) {
-    .section { padding: 60px 20px; }
+    .section { padding: 50px 15px; }
     .section-title { font-size: 2rem; margin-bottom: 40px; }
 
     /* Navbar Mobile */
@@ -1143,28 +1143,38 @@ footer {
     .slide-text-rectangle {
         width: 100% !important;
         height: auto !important;
-        padding: 15px 0 !important; /* Reduced from 20px */
-        font-size: 0.95rem !important;
+        padding: 15px 10px !important; /* Added 10px horizontal padding */
+        font-size: 1rem !important; /* Slightly larger for readability */
     }
 
     /* Fix for Recent Updates shrinking */
     .recent-slider-container {
-        padding: 1.5rem 1rem !important; /* Reduced from 3rem */
-        border-radius: 20px;
+        padding: 1rem 0 !important; /* Zero horizontal padding */
+        border-radius: 15px;
+        width: 100% !important;
     }
 
     .recent-slide {
-        padding: 0 10px !important; /* Reduced from 60px */
+        padding: 0 !important; /* Remove all padding from slides */
+    }
+
+    .slide-content-wrapper {
+        padding: 10px !important;
+        width: 100% !important;
+        max-width: none !important;
+    }
+
+    .slide-image-square {
+        width: 100% !important;
+        height: auto !important;
+        aspect-ratio: 1 / 1; /* Maintain square shape */
+        max-height: 300px;
     }
 
     .recent-slider-container .slider-controls {
-        padding: 0 5px;
-    }
-
-    .recent-slider-container .slider-controls button {
-        width: 35px;
-        height: 35px;
-        font-size: 0.8rem;
+        padding: 0;
+        width: 100%;
+        justify-content: space-between;
     }
 
     .modal-content {
